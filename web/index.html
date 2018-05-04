@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Recipe Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>Recipe Form</h3>
+        <div>
+            <form action ="GetParameters" method="get">
+                <!-- NAME TEXT FIELDS -->
+                <p><label>Recipe Name</label>
+                    <input type="text" name="recipeName" size="30" />
+                    <label>Chef's Name</label>
+                    <input type="text" name="chef" size="30" />
+                </p>
+                    
+                <!-- CATEGORY RADIO BUTTONS -->
+                <p><label>Category</label>
+                    <input type="radio" name="category" value="Sweet" checked />Sweet
+                    <input type="radio" name="category" value="Savory" />Savory
+                </p>
+                
+                <!-- SERVINGS COMBO BOX (combo boxes cannot have "multiple") -->
+                <p><label>Number of Servings</label>
+                    <select name="servings" size="1" multiple>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                        <option value="4">Four</option>
+                        <option value="5">Five</option>
+                        <option value="6">Six</option>
+                        <option value="7">Seven</option>
+                        <option value="8">Eight</option>
+                        <option value="9">Nine</option>
+                        <option value="10">Ten</option>
+                    </select>
+                    
+                    <!-- PREP TIME list (if multiple, can select 1+ options)-->
+                    <label>Preparation time</label>
+                    <select name="prep" size="1"> <!-- multiple here -->
+                        <option>1-15 minutes</option>
+                        <option>15-30 minutes</option>
+                        <option>30-45 minutes</option>
+                        <option>45-60 minutes</option>
+                        <option>1-2 hours</option>
+                        <option>2-3 hours</option>
+                        <option>3+ hours</option>
+                    </select>
+                </p>
+                
+                <!-- EQUIPMENT check boxes -->
+                <p><label>Equipment needed</label>
+                    <input type="checkbox" name="oven" />Oven
+                    <input type="checkbox" name="food-processor" />Food Processor
+                    <input type="checkbox" name="electric-mixer" />Electric Mixer
+                    <input type="checkbox" name="spiralizer" />Spiralizer
+                </p>
+                
+                <p>Notes</p>
+                <p><textarea name="notes" rows="3" cols="60"></textarea></p>
+                   
+                <!-- SUBMIT AND RESET buttons -->
+                <p><input type="submit" value="Submit" />
+                    <input type="reset" value="Reset" />
+                </p>                
+            </form>
+        
+        
+        </div>
+    </body>
+</html>

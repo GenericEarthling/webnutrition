@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<title>Recipe</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles/w3.css">
+<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    textarea {
+        font-size: 12px;
+        columns: 60;
+        rows: 4;        
+    }
+    .input-small {
+        width: auto;
+        
+    }
+</style>
+<body class="w3-light-grey">
+    
+<!-- CONTAINER FOR ALL  -->
+<div class="w3-container w3-padding-24" style="margin: auto; width: 800px">
+    
+    <!-- CONTAINER FOR RECIPE  -->    
+    <div class="w3-container w3-gray w3-block">
+        <h1>Create Your Recipe Label</h1>
+    </div>
+        
+    <!-- Trigger/Open The Modal -->
+    <div class="w3-container w3-blue w3-padding-16 w3-margin-top w3-margin-bottom">
+        <h2><b>Step 1:</b> Enter Ingredients</h2>        
+        <button id="modal-1-btn" class="w3-button w3-red">Add Ingredient</button>
+    </div>
+    
+    <!-- MODAL FORM FOR INGREDIENT INPUT -->
+    <div id="modal-1" class="modal w3-animate-top">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <form action="<c:url value='/MainControl/addIngredient' />" method="post" >
+            <!-- Modal Cancel button -->
+            <div class="">            
+                <span class="close">cancel</span>
+            </div>
+            
+            <div class="w3-margin-top">
+                <h2 class="nut-facts" style="font-family:Impact, Charcoal;"><b>Nutrition Facts</b></h2>
+            </div>
+            
+            <div class="">
+                <label style="display: inline-block;" >Ingredient </label>
+                <input class="w3-border" style="float: right;" type="text" name="ingredientName" value="${ingredient.ingredientName}" > 
+            </div> <hr class="nut-line nut-line-1" >
+            
+            <div class="">
+                <label style="display: inline-block;" >Serving Size from Label (in grams)</label> 
+                <input class="w3-border"  style="float: right;" type="number" name="servingSizeInGrams" value="" >
+            </div> <hr class="nut-line nut-line-3" >
+                       
+            <div class="">
+                <label style="display: inline-block;" >Calories	&emsp;</label> 
+                <input class="w3-border" type="number" type="number" name="calories" value="" >
+            </div>   <hr class="nut-line nut-line-2" >
+            
+            <div class="">
+                <label style="display: inline-block;" >Fat &emsp;</label> 
+                <input class="w3-border" type="number" name="fat" value="" >
+            </div> <hr class="nut-line nut-line-1" style=""> 
+            
+            <div class="">
+                <label style="display: inline-block;" >Cholesterol &emsp;</label> 
+                <input class="w3-border" type="number" name="cholesterol" value="" >
+            </div>  <hr class="nut-line nut-line-1" style="">          
+
+            <div class="">
+                <label style="display: inline-block;" >Sodium  &emsp;</label> 
+                <input class="w3-border" type="number" name="sodium" value="" >
+            </div>    <hr class="nut-line nut-line-1" style="">        
+
+            <div class="">
+                <label style="display: inline-block;" >Potassium  &emsp;</label> 
+                <input class="w3-border" type="number" name="potassium" value="" >
+            </div>     <hr class="nut-line nut-line-1" style="">       
+
+            <div class="">
+                <label style="display: inline-block;" >Carbohydrates  &emsp;</label> 
+                <input class="w3-border" type="number" name="carbohydrates" value="" >
+            </div>      <hr class="nut-line nut-line-1" style="">      
+
+            <div class="">
+                <label style="display: inline-block;" >Fiber  &emsp;</label> 
+                <input class="w3-border" type="number" name="fiber" value="" >
+            </div>   <hr class="nut-line nut-line-1" style="">         
+
+            <div class="">
+                <label style="display: inline-block;" >Protein  &emsp;</label> 
+                <input class="w3-border" type="number" name="protein" value="" >
+            </div>   <hr class="nut-line nut-line-2" style="">         
+
+            <div class="w3-margin-bottom">
+                <label style="display: inline-block;" >Amount in recipe &emsp;</label> 
+                <input class="w3-border" type="number" name="amount" value="" >
+                <select name="measurementType">
+                  <option value="grams">grams</option>
+                  <option value="liquid oz">liquid oz</option>
+                  <option value="dry oz">dry oz</option>
+                  <option value="teaspoon">teaspoon</option>
+                  <option value="tablespoon">tablespoon</option>
+                  <option value="milligram">milligram</option>
+                  <option value="liquid cup">liquid cup</option>
+                  <option value="dry cup">dry cup</option>
+                  <option value="liquid pint">liquid pint</option>
+                  <option value="dry pint">dry pint</option>
+                </select>            
+            </div>     <hr class="nut-line nut-line-2" style="">           
+            <!-- SUBMIT & RESET BUTTONS -->
+            <input class="w3-button w3-red"  type="submit" value="Add">
+            <input class="w3-button w3-gray" type="reset" value="Reset">            
+        </form>
+    </div>
+    </div>   <!-- END OF MODAL FORM   -->
+    
+    <!-- INGREDIENT TABLE -->
+<c:choose>    
+    <c:when test="${emptyList != null}">
+        <p>Your ingredient list is empty.</p>
+    </c:when>
+        <c:otherwise>        
+        <table class="w3-table-all">
+        <tr>
+            <th></th>
+            <th>Amount</th>
+            <th></th>
+            <th style="width:150px;">Ingredient</th>
+            <th>Calories</th>
+            <th>Fat</th>
+            <th>Cholesterol</th>
+            <th>Sodium</th>
+            <th>Potassium</th>
+            <th>Carbohydrates</th>
+            <th>Fiber</th>
+            <th>Protein</th>
+        </tr>
+        <c:forEach var="item" items="${list.items}">
+            <tr>
+                <td><!-- REMOVE INGREDIENT BUTTON -->
+                    <form action="<c:url value='/main/removeIngredient'/>" method="post">
+                    <input type="hidden" name="ingredientId" value="<c:out value='${item.ingredientList.ingredientId}'/>">
+                    <input type="submit" value="Delete">
+                    </form>
+                </td>
+
+                <td>${item.list.amt}</td> 
+                <td>${item.list.measurement}</td>
+                <td>${item.list.ingredientName}</td>
+                <td>${item.list.calories}</td>
+                <td>${item.list.fat}</td>
+                <td>${item.list.sodium}</td>
+                <td>${item.list.potassium}</td>
+                <td>${item.ingredient.carbohydrates}</td>
+                <td>${item.ingredient.fiber}</td>
+                <td>${item.ingredient.protein}</td>
+            </tr>            
+        </c:forEach>
+        
+        </table>
+    </c:otherwise>
+</c:choose>
+    
+   
+    <!-- NUTRITION LABEL BUTTON -->
+    <div class="w3-container w3-blue w3-padding-16 w3-margin-top w3-margin-bottom">
+        <h2><b>Step 2:</b> Prepare Nutrition Label</h2>
+        <form action="<c:url value='/main/showLabel'/>" method="post">
+            
+            <div class="w3-cell-row">
+                Recipe Name &emsp; <input class="w3-input w3-border" type="text" name="name" value="${recipe.recipeName}">                       
+            </div>
+            
+            <div class="w3-cell-row">
+                Preparation Directions &emsp; <br><textarea class="w3-input w3-border" type="text" name="directions" value="${recipe.directions}"></textarea>                       
+            </div>
+            
+            <div class="w3-cell-row w3-block w3-margin-top">    
+                <div class="w3-container w3-cell">
+                    <label> Number of servings &emsp;</label>
+                    <input class="w3-input w3-border" type="number" min="1" name="servings" value="${servings}" required>
+                </div>
+                <div class="w3-container">
+                    <label>Weight after cooking (in oz) &emsp;</label>
+                    <input class="w3-input w3-border" type="number" name="weight" value="${weight}">  
+                </div>    
+            </div>
+
+            <div class="w3-cell-row w3-block w3-margin-top">    
+                <div class="w3-container w3-cell">
+                    <label> Cook/Setting Temperature  &emsp;</label>
+                    <input class="w3-input w3-border" type="number" name="weight" value="${recipe.temperature}">
+                </div>    
+                <div class="w3-container w3-cell">
+                    <label> Cook/Setting Time &emsp;</label>
+                    <input class="w3-input w3-border" type="string" name="weight" value="${recipe.cookTime}">                
+                </div>
+            </div>
+          
+            <input class="w3-button w3-red w3-margin-top" name="button" value="Get Nutrition Label">         
+        </form>
+    </div>
+<!-- END NUTRITION LABEL BUTTON -->
+
+<!-- COOKIE INFORMATION TABLE -->
+<div>
+    <h1>Cookies</h1>
+    <h4>Cookies used for this web application:</h4>
+    <ul>
+        <li>Are sent to the server through the browser.</li>
+        <li>They only access this particular session.</li>
+        <li>They will remain in your browser until you close your browser.</li>
+    </ul>
+    <table class="w3-table-all w3-left-align" >
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+        <c:forEach var="c" items="${cookie}">
+            <tr>
+                <td>${c.value.name}</td>
+                <td>${c.value.value}</td>
+            </tr>
+        </c:forEach>
+    </table>    
+</div>
+<!-- END COOKIE INFORMATION TABLE -->
+</div> <!-- END CONTAINER FOR ALL  -->
+
+<script>
+// INGREDIENT Modal
+var modal_1 = document.getElementById('modal-1');
+// Get the button that opens the modal
+var modal_1_btn = document.getElementById('modal-1-btn');
+// Get the <span> element that closes the modal
+var cancel = document.getElementsByClassName("close")[0];
+// When the user clicks on the button, open the modal 
+modal_1_btn.onclick = function() {
+    modal_1.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+cancel.onclick = function() {
+    modal_1.style.display = "none";
+}
+</script>
+
+</body>
+</html>
