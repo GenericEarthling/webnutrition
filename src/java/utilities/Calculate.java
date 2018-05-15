@@ -13,10 +13,10 @@ public class Calculate {
     // default constructor
     public Calculate(){}
     
-    // Finds the nutrient total for the ingredient that is displayed in the table
-    public static double nutrientTotal(double servingSize, double nutrientValue, double ingredientAmt, String measure) {
+    // Finds the nutrient total for the ingredient that is displayed in the table    
+    public static double nutrientTotal(double servingSize, double nutrientValue, double ingredientAmt, String measurementType) {
         // convert amount of ingredient in recipe (ingredAmt) to grams
-        double ingredAmtGrams = amountToGrams(ingredientAmt, measure);
+        double ingredAmtGrams = amountToGrams(ingredientAmt, measurementType);
         
         // use serving size to find the percentage of each nutrient 
         // that is in the ingredient amount
@@ -30,7 +30,7 @@ public class Calculate {
     }         
     
     // 1)and 2)convert amount of ingredient in the recipe to grams
-    public static double amountToGrams(double amount, String measurementType) {
+    public static double amountToGrams(double ingredientAmt, String measurementType) {
         double gramEquivalent = 0;
         switch (measurementType) {
             case "grams": 
@@ -67,7 +67,7 @@ public class Calculate {
                 gramEquivalent = 1;
                 break;
         }        
-        return gramEquivalent * amount;
+        return gramEquivalent * ingredientAmt;
     }    
     
     // 3)calculate percentage of each nutrient per gram

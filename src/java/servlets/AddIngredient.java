@@ -5,12 +5,14 @@
  */
 package servlets;
 
+import data.DataManagement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import static data.DataManagement.*;
 
 /**
  *
@@ -46,10 +48,11 @@ public class AddIngredient extends HttpServlet {
 //        processRequest(request, response);
 
         response.setContentType("text/html");
-        try (PrintWriter out = response.getWriter()) {
+        PrintWriter out = response.getWriter();
+        try {
             // get parameters
             String ingredientName = request.getParameter("ingredientName");
-            double servingSizeInGrams = Double.valueOf(request.getParameter("servingSizeInGrams"));
+            double servingSize = Double.valueOf(request.getParameter("servingSizeInGrams"));
             double calories = Double.valueOf(request.getParameter("calories"));
             double fat = Double.valueOf(request.getParameter("fat"));
             double cholesterol = Double.valueOf(request.getParameter("cholesterol"));
@@ -58,14 +61,24 @@ public class AddIngredient extends HttpServlet {
             double carbohydrates = Double.valueOf(request.getParameter("carbohydrates"));
             double fiber = Double.valueOf(request.getParameter("fiber"));
             double protein = Double.valueOf(request.getParameter("protein"));
-            String measureType = request.getParameter("measurementType");
-            double measurementAmt = Double.valueOf(request.getParameter("measurementAmount"));
+            String measurementType = request.getParameter("measurementType");
+            double ingredientAmt = Double.valueOf(request.getParameter("measurementAmount"));
             
-            // Store data in database
-            // calculate values for current recipe
+            // TODO: varify data entered for doubles are numbers not letters
+            
+            // save data to file and session
+            DataManagement.saveData(ingredientName, servingSize, calories, fat, cholesterol, sodium, potassium, carbohydrates, fiber, protein, measurementType, ingredientAmt);
+            out.println(ingredientName + " " + " is now saved.");            
+        }
+        catch(Exception ex) {
+            out.println("Error in AddIngredient, doGet(): " + ex.getMessage());
+        }
+        finally {
+            out.close(); // Close stream
+        }
 
-            out.close();
-        }        
+
+                
     }
 
     /**
