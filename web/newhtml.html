@@ -24,11 +24,11 @@
 <div class="w3-container w3-padding-24" style="margin: auto; width: 800px">
     
     <!-- CONTAINER FOR RECIPE  -->    
-    <div class="w3-container w3-gray w3-block">
-        <h1>Create Your Recipe Label</h1>
+    <div class="w3-container w3-red w3-block">
+        <h1>Create Your Own Recipe Label</h1>
     </div>
         
-    <!-- Trigger/Open The Modal -->
+    <!-- Step 1: ENTER INGREDIENTS Trigger/Open The Modal -->
     <div class="w3-container w3-blue w3-padding-16 w3-margin-top w3-margin-bottom">
         <h2><b>Step 1:</b> Enter Ingredients</h2>        
         <button id="modal-1-btn" class="w3-button w3-red">Add Ingredient</button>
@@ -50,7 +50,7 @@
             
             <div class="">
                 <label style="display: inline-block;" >Ingredient </label>
-                <input class="w3-border" style="float: right;" type="text" name="ingredientName" value="${ingredient.ingredientName}" > 
+                <input class="w3-border" style="float: right;" type="text" name="ingredientName" value="" > 
             </div> <hr class="nut-line nut-line-1" >
             
             <div class="">
@@ -169,42 +169,26 @@
 </c:choose>
     
    
-    <!-- NUTRITION LABEL BUTTON -->
+    <!-- Step 2: PREPARE NUTRITION LABEL BUTTON -->
     <div class="w3-container w3-blue w3-padding-16 w3-margin-top w3-margin-bottom">
         <h2><b>Step 2:</b> Prepare Nutrition Label</h2>
         <form action="<c:url value='/main/showLabel'/>" method="post">
             
-            <div class="w3-cell-row">
-                Recipe Name &emsp; <input class="w3-input w3-border" type="text" name="name" value="${recipe.recipeName}">                       
+        <div class="w3-cell-row">
+            <div class="w3-cell w3-mobile" >
+                <label>Recipe Name &emsp; </label>
+                <input class="w3-input w3-border" type="text" name="name" value="">
             </div>
-            
-            <div class="w3-cell-row">
-                Preparation Directions &emsp; <br><textarea class="w3-input w3-border" type="text" name="directions" value="${recipe.directions}"></textarea>                       
+            <div class="w3-cell"> &emsp; </div><!-- this is the space between input -->
+            <div class="w3-cell w3-mobile" >
+                <label> Number of servings &emsp;</label>
+                <input class="w3-input w3-border" type="number" min="1" name="servings" value="${servings}" required>
             </div>
-            
-            <div class="w3-cell-row w3-block w3-margin-top">    
-                <div class="w3-container w3-cell">
-                    <label> Number of servings &emsp;</label>
-                    <input class="w3-input w3-border" type="number" min="1" name="servings" value="${servings}" required>
-                </div>
-                <div class="w3-container">
-                    <label>Weight after cooking (in oz) &emsp;</label>
-                    <input class="w3-input w3-border" type="number" name="weight" value="${weight}">  
-                </div>    
-            </div>
+        </div>
+        <div class="">
+            Notes &emsp; <br><textarea class="w3-input w3-border" type="text" name="directions" value="${recipe.directions}"></textarea>             </div>
 
-            <div class="w3-cell-row w3-block w3-margin-top">    
-                <div class="w3-container w3-cell">
-                    <label> Cook/Setting Temperature  &emsp;</label>
-                    <input class="w3-input w3-border" type="number" name="weight" value="${recipe.temperature}">
-                </div>    
-                <div class="w3-container w3-cell">
-                    <label> Cook/Setting Time &emsp;</label>
-                    <input class="w3-input w3-border" type="string" name="weight" value="${recipe.cookTime}">                
-                </div>
-            </div>
-          
-            <input class="w3-button w3-red w3-margin-top" name="button" value="Get Nutrition Label">         
+        <input class="w3-button w3-red w3-margin-top" name="button" value="Get Nutrition Label">         
         </form>
     </div>
 <!-- END NUTRITION LABEL BUTTON -->

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+This file depends on GetParameters.java file
 -->
 <html>
     <head>
@@ -13,6 +11,9 @@ and open the template in the editor.
     <body>
         <h3>Recipe Form</h3>
         <div>
+            <!-- The submit btn invokes the GetParameters servlet. The 
+            servlet uses the "name" attribute in  the getParameter(attributeName)
+            method to obtain the parameter "value" as a string -->
             <form action ="GetParameters" method="get">
                 <!-- NAME TEXT FIELDS -->
                 <p><label>Recipe Name</label>
@@ -71,8 +72,8 @@ and open the template in the editor.
                     <input type="reset" value="Reset" />
                 </p>                
             </form>
-        
-        
+            
+       
         </div>
     </body>
 </html>
