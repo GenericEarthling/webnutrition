@@ -8,6 +8,10 @@
         <servlet-name>GetParameters</servlet-name>
         <servlet-class>servlets.GetParameters</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddIngredient</servlet-name>
+        <servlet-class>servlets.AddIngredient</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>FirstServlet</servlet-name>
         <url-pattern>/FirstServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>GetParameters</servlet-name>
         <url-pattern>/GetParameters</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddIngredient</servlet-name>
+        <url-pattern>/AddIngredient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

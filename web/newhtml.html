@@ -38,7 +38,7 @@
     <div id="modal-1" class="modal w3-animate-top">
     <!-- Modal content -->
     <div class="modal-content">
-        <form action="<c:url value='/MainControl/addIngredient' />" method="post" >
+        <form action="AddIngredient" method="get" >
             <!-- Modal Cancel button -->
             <div class="">            
                 <span class="close">cancel</span>
@@ -50,57 +50,57 @@
             
             <div class="">
                 <label style="display: inline-block;" >Ingredient </label>
-                <input class="w3-border" style="float: right;" type="text" name="ingredientName" value="" > 
+                <input class="w3-border" style="float: right;" name="ingredientName" value="" > 
             </div> <hr class="nut-line nut-line-1" >
             
             <div class="">
                 <label style="display: inline-block;" >Serving Size from Label (in grams)</label> 
-                <input class="w3-border"  style="float: right;" type="number" name="servingSizeInGrams" value="" >
+                <input class="w3-border"  style="float: right;" name="servingSizeInGrams" value="" >
             </div> <hr class="nut-line nut-line-3" >
                        
             <div class="">
                 <label style="display: inline-block;" >Calories	&emsp;</label> 
-                <input class="w3-border" type="number" type="number" name="calories" value="" >
+                <input class="w3-border" type="number" name="calories" value="" >
             </div>   <hr class="nut-line nut-line-2" >
             
             <div class="">
                 <label style="display: inline-block;" >Fat &emsp;</label> 
-                <input class="w3-border" type="number" name="fat" value="" >
+                <input class="w3-border" name="fat" value="" >
             </div> <hr class="nut-line nut-line-1" style=""> 
             
             <div class="">
                 <label style="display: inline-block;" >Cholesterol &emsp;</label> 
-                <input class="w3-border" type="number" name="cholesterol" value="" >
+                <input class="w3-border" name="cholesterol" value="" >
             </div>  <hr class="nut-line nut-line-1" style="">          
 
             <div class="">
                 <label style="display: inline-block;" >Sodium  &emsp;</label> 
-                <input class="w3-border" type="number" name="sodium" value="" >
+                <input class="w3-border" name="sodium" value="" >
             </div>    <hr class="nut-line nut-line-1" style="">        
 
             <div class="">
                 <label style="display: inline-block;" >Potassium  &emsp;</label> 
-                <input class="w3-border" type="number" name="potassium" value="" >
+                <input class="w3-border" name="potassium" value="" >
             </div>     <hr class="nut-line nut-line-1" style="">       
 
             <div class="">
                 <label style="display: inline-block;" >Carbohydrates  &emsp;</label> 
-                <input class="w3-border" type="number" name="carbohydrates" value="" >
+                <input class="w3-border" name="carbohydrates" value="" >
             </div>      <hr class="nut-line nut-line-1" style="">      
 
             <div class="">
                 <label style="display: inline-block;" >Fiber  &emsp;</label> 
-                <input class="w3-border" type="number" name="fiber" value="" >
+                <input class="w3-border" name="fiber" value="" >
             </div>   <hr class="nut-line nut-line-1" style="">         
 
             <div class="">
                 <label style="display: inline-block;" >Protein  &emsp;</label> 
-                <input class="w3-border" type="number" name="protein" value="" >
+                <input class="w3-border" name="protein" value="" >
             </div>   <hr class="nut-line nut-line-2" style="">         
 
             <div class="w3-margin-bottom">
                 <label style="display: inline-block;" >Amount in recipe &emsp;</label> 
-                <input class="w3-border" type="number" name="amount" value="" >
+                <input class="w3-border" name="measurementAmount" value="" >
                 <select name="measurementType">
                   <option value="grams">grams</option>
                   <option value="liquid oz">liquid oz</option>
@@ -129,7 +129,7 @@
         <c:otherwise>        
         <table class="w3-table-all">
         <tr>
-            <th></th>
+            <!-- REMOVE INGREDIENT BUTTON --><!--<th></th>-->
             <th>Amount</th>
             <th></th>
             <th style="width:150px;">Ingredient</th>
@@ -144,12 +144,13 @@
         </tr>
         <c:forEach var="item" items="${list.items}">
             <tr>
-                <td><!-- REMOVE INGREDIENT BUTTON -->
+                <!-- REMOVE INGREDIENT BUTTON -->
+                <!--<td>
                     <form action="<c:url value='/main/removeIngredient'/>" method="post">
                     <input type="hidden" name="ingredientId" value="<c:out value='${item.ingredientList.ingredientId}'/>">
                     <input type="submit" value="Delete">
                     </form>
-                </td>
+                </td>-->
 
                 <td>${item.list.amt}</td> 
                 <td>${item.list.measurement}</td>

@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Tender
  */
-public class GetParameters extends HttpServlet {
+public class AddIngredient extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,7 +30,6 @@ public class GetParameters extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
     }
 
     /**
@@ -44,39 +43,29 @@ public class GetParameters extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+
         response.setContentType("text/html");
         try (PrintWriter out = response.getWriter()) {
             // get parameters
-            String recipeName = request.getParameter("recipeName");
-            String chef = request.getParameter("chef");
-            String category = request.getParameter("category");
-            String[] servings = request.getParameterValues("servings");
-            String prepTime = request.getParameter("prep");
-            String oven = request.getParameter("oven");
-            String foodProcessor = request.getParameter("food-processor");
-            String electricMixer = request.getParameter("electric-mixer");
-            String spiralizer = request.getParameter("spiralizer");
-            String notes = request.getParameter("notes");
+            String ingredientName = request.getParameter("ingredientName");
+            double servingSizeInGrams = Double.valueOf(request.getParameter("servingSizeInGrams"));
+            double calories = Double.valueOf(request.getParameter("calories"));
+            double fat = Double.valueOf(request.getParameter("fat"));
+            double cholesterol = Double.valueOf(request.getParameter("cholesterol"));
+            double sodium = Double.valueOf(request.getParameter("sodium"));
+            double potassium = Double.valueOf(request.getParameter("potassium"));
+            double carbohydrates = Double.valueOf(request.getParameter("carbohydrates"));
+            double fiber = Double.valueOf(request.getParameter("fiber"));
+            double protein = Double.valueOf(request.getParameter("protein"));
+            String measureType = request.getParameter("measurementType");
+            double measurementAmt = Double.valueOf(request.getParameter("measurementAmount"));
             
-            // display data
-            out.println("<br>Recipe Name: " + recipeName + " by " + chef);
-            out.println("<br>Category: " + category);
-            out.println("<br>Preperation Time: " + prepTime);
-            out.println("<br>Number of Servings: ");            
-            if (servings != null)
-                for (int i = 0; i < servings.length; i++)
-                    out.print(servings[i] + " - ");
-            
-            out.println("<br>Equipment Needed: ");
-            out.println("<br>Oven: " + oven + 
-                        "<br>Food Processor: " + foodProcessor +
-                        "<br>Electric Mixer: " + electricMixer +
-                        "<br>Spiralizer: " + spiralizer);
-            out.println("<br>Notes: " + notes);
+            // Store data in database
+            // calculate values for current recipe
+
             out.close();
-        }
-            
+        }        
     }
 
     /**
