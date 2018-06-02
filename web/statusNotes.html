@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<style>
+    body {
+        padding: 20px;
+        font-family: sans-serif;
+        color: gray;
+    }    
+    h2 {
+        line-height: 25%;
+        color: darkcyan;
+    }
+    h4, ul, li {
+        line-height: 1.2;
+    }
+    h4 {
+        line-height: .7;
+    }
+</style>
+
+
+        <title>Web Nutrition Notes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <body>
+        <h1>Current Status</h1>
+        <h2>newhtml.html.............................</h2>
+        <h4>Step1: Enter Ingredients</h4>
+        <ul>
+            <li>"Add Ingredient" works</li>
+            <li>Ingredient table does not display data</li>
+        </ul>
+        
+        <h4>Step2: Prepare Nutrition Label</h4>
+        <ul>
+            <li>!!! IMPORTANT: see index.html <br>This file uses the GetParameters.java as an example of collecting data and displaying results in separate web page.</li>
+            <li>"Get Nutrition Label" does not work</li>
+            <li>Data for Recipe needs setting up with GetLabel java class</li>
+        </ul>
+        
+        <h2>AddIngredient.java.......................</h2>
+        <h4>doGet</h4>
+        <ul>
+            <li>works</li>
+            <li>it calls the DataManagement class to save to database/file</li>
+        </ul>
+        <h4>doPost, processRequest </h4>
+        <ul>
+            <li>These two are not used at this point, but are in the file ready for use</li>
+        </ul>
+        <h2>DataManagement.java......................</h2>
+        <h4>saveData</h4>
+        <ul>
+            <li>need to set up database connection (create separate java class to handle connection)</li>
+            <li>need to create save statements</li>
+        </ul>
+        
+        <h4>updateData, deleteData, loadData</h4>
+        <ul>
+            <li>will need to create these methods eventually</li>
+        </ul>
+
+        <h1>Example files for displaying whole Recipe</h1>
+        <h2>index.html...............................</h2>
+        <p>This is used with GetParameters.java class.</p>
+        
+        <h2>GetParameters.java.......................</h2>
+        <h4>doGet</h4>
+        <p>This will display the recipe information. </p>
+
+    </body>
+</html>
